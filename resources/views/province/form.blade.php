@@ -3,13 +3,11 @@
 
     <div class="col-sm-6">
       <div class="form-group">
-        {!! Html::decode(Form::label('name', __('label.form.name')." <small>*</small>")) !!}
-        {!! Form::text('name', ((isset($province->name))? $province->name : '' ), ['class' => 'form-control '. (($errors->has("name"))? "is-invalid" : ""),'placeholder' => 'name','required']) !!}
-        {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+        {!! Html::decode(Form::label('name_kh', __('label.form.name_kh')." <small>*</small>")) !!}
+        {!! Form::text('name_kh', ((isset($province->name_kh))? $province->name_kh : '' ), ['class' => 'form-control '. (($errors->has("name_kh"))? "is-invalid" : ""),'placeholder' => 'kh name','required']) !!}
+        {!! $errors->first('name_kh', '<div class="invalid-feedback">:message</div>') !!}
       </div>
     </div>
-    {{-- / .col --}}
-
     <div class="col-sm-6">
       <div class="form-group">
         {!! Html::decode(Form::label('name_en', __('label.form.name_en')." <small>*</small>")) !!}
@@ -17,8 +15,21 @@
         {!! $errors->first('name_en', '<div class="invalid-feedback">:message</div>') !!}
       </div>
     </div>
-    {{-- / .col --}}
-
   </div>
-  {{-- / .row --}}
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        {!! Html::decode(Form::label('path_kh', __('label.form.path_kh')." <small>*</small>")) !!}
+        {!! Form::text('path_kh', ((isset($province->path_kh))? $province->path_kh : '' ), ['class' => 'form-control '. (($errors->has("path_kh"))? "is-invalid" : ""),'placeholder' => 'kh full name path','required']) !!}
+        {!! $errors->first('path_kh', '<div class="invalid-feedback">:message</div>') !!}
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        {!! Html::decode(Form::label('path_en', __('label.form.path_en')." <small>*</small>")) !!}
+        {!! Form::text('path_en', ((isset($province->path_en))? $province->path_en : '' ), ['class' => 'form-control '. (($errors->has("path_en"))? "is-invalid" : ""),'placeholder' => 'en full name path','required']) !!}
+        {!! $errors->first('path_en', '<div class="invalid-feedback">:message</div>') !!}
+      </div>
+    </div>
+  </div>
   

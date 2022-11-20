@@ -111,7 +111,7 @@
 
 							<p style="color: green" class="text-center">
 								<small>
-									{{ exec('git pull') }}<br />
+									{{ exec('cd ../ && git pull') }}<br />
 									{{ exec('cd ../ && php artisan -V') }}<br />
 									{{ exec('cd ../ && php artisan migrate') }}
 								</small>
