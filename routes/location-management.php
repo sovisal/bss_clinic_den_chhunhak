@@ -11,9 +11,9 @@ Route::group(['prefix' => 'province', 'as' => 'province.', 'namespace' => 'Locat
 	Route::get('/', 'FourLevelAddressController@index')->name('index')->middleware('can:Province Index');
 	Route::get('/create', 'FourLevelAddressController@create')->name('create')->middleware('can:Province Create');
 	Route::post('/store', 'FourLevelAddressController@store')->name('store')->middleware('can:Province Create');
-	Route::get('/{province}/edit', 'ProvinceController@edit')->name('edit')->middleware('can:Province Edit');
-	Route::put('/{province}/update', 'ProvinceController@update')->name('update')->middleware('can:Province Edit');
-	Route::delete('/{province}/delete', 'ProvinceController@destroy')->name('destroy')->middleware('can:Province Delete');
+	Route::get('/{province}/edit', 'FourLevelAddressController@edit')->name('edit')->middleware('can:Province Edit');
+	Route::put('/{province}/update', 'FourLevelAddressController@update')->name('update')->middleware('can:Province Edit');
+	// Route::delete('/{province}/delete', 'ProvinceController@destroy')->name('destroy')->middleware('can:Province Delete');
 	
 	Route::post('/getSelectDistrict', 'ProvinceController@getSelectDistrict')->name('getSelectDistrict');
 });

@@ -106,7 +106,7 @@ class FourLevelAddressController extends Controller
 	public function create (Request $request) {
 		$code_length = $request->addr ? strlen($request->addr) : 0;
 		$this->data = [
-			'addr' => $request->addr			
+			'addr' => $request->addr		
 		];
 		return view('province.create', $this->data);
 	} 
@@ -137,6 +137,30 @@ class FourLevelAddressController extends Controller
 		if (FourLevelAddress::create(compact('_type_kh', '_type_en', '_name_kh', '_name_en', '_path_kh', '_path_en', '_code'))) {
 			return redirect()->back()
 			->with('success', __('alert.crud.success.create', ['name' => $_name_kh]) . $_name_kh . " :: " . $_name_en);
+		}
+	}
+
+	public function edit (Request $request, $code) {
+		$province = FourLevelAddress::where('_code', $code)->first();
+		$this->data = [
+			'addr' => $request->addr,
+			'province' => $province,		
+		];
+		return view('province.edit', $this->data);
+	}
+
+	public function update(Request $request, $code)
+	{
+		$_name_kh = $request->name_kh;
+		$_name_en = $request->name_en;
+		
+		$_path_kh = $request->path_kh;
+		$_path_en = $request->path_en;
+
+		$province = FourLevelAddress::where('_code', $code)->first();
+		if ($province->update(compact('_name_kh', '_name_en', '_path_kh', '_path_en'))){
+			return redirect()->back()
+				->with('success', __('alert.crud.success.update',  ['name' => $_name_kh]) . $_name_kh . " :: " . $_name_en);
 		}
 	}
 }

@@ -25,6 +25,7 @@
 		@php
 			$back_addr = substr_replace($addr, '', -2);
 			$code_length = $addr ? strlen($addr) : 0;
+			$_addr = $addr;
 		@endphp
 		<div class="card-body">
 			<table id="datatables" class="table table-bordered table-hover">
@@ -43,7 +44,7 @@
 				<tbody>
 					@foreach($address as $i => $addr)
 						<tr>
-							<td class="text-center">{{ $addr['_code'] }} :: {{ ++$i }}</td>
+							<td class="text-center">{{ ++$i }}</td>
 							<td>{{ $addr['_name_kh'] }} <br/> {{ $addr['_name_en'] }}</td>
 							<td>{{ $addr['_path_kh'] }} <br /> {{ $addr['_path_en'] }}</td>
 							<td class="text-center">
@@ -51,9 +52,8 @@
 								</a>
 							</td>
 							<td class="text-center">
-								--
-								<!-- <a href="{{ route('doctor.edit', $addr['_code']) }}" class="btn btn-info btn-xs btn-flat" data-toggle="tooltip" data-placement="left" title="{{ __('label.buttons.edit') }}"><i class="fa fa-pencil-alt"></i></a>
-								<button class="btn btn-danger btn-xs btn-flat BtnDeleteConfirm" value="{{ $addr['_code'] }}" data-toggle="tooltip" data-placement="left" title="{{ __('label.buttons.delete') }}"><i class="fa fa-trash-alt"></i></button> -->
+								<a href="{{ route('province.edit', $addr['_code']) }}?addr={{ $_addr }}" class="btn btn-info btn-xs btn-flat" data-toggle="tooltip" data-placement="left" title="{{ __('label.buttons.edit') }}"><i class="fa fa-pencil-alt"></i></a>
+								<!-- <button class="btn btn-danger btn-xs btn-flat BtnDeleteConfirm" value="{{ $addr['_code'] }}" data-toggle="tooltip" data-placement="left" title="{{ __('label.buttons.delete') }}"><i class="fa fa-trash-alt"></i></button> -->
 							</td>
 						</tr>
 					@endforeach
